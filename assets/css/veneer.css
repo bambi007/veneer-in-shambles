@@ -1,45 +1,49 @@
 #veneer {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: #0000008e;
+  position: fixed;
+  width: 0;
+  height: 0;
+  background: #00000000;
   z-index: 10000;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-@media (max-width: 1024px) {
-  #veneer {
-    height: 100%;
-    position: fixed;
-  }
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
 }
 
 #veneer.veneer-on {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #0000008e;
+}
+
+#veneer.veneer-on .veneer-image-container {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 #veneer .veneer-image-container {
-  position: relative;
   max-height: 90vh;
   max-width: 90vw;
-  border: 10px solid white;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border: 10px solid white;
 }
 
 #veneer .veneer-image-container .veneer-image {
-  border: 5px solid black;
-  max-width: 100%;
-  max-height: 100%;
   max-width: 100%;
   max-height: 100%;
 }
@@ -47,11 +51,12 @@
 #veneer #veneer-close-button {
   cursor: pointer;
   position: absolute;
+  z-index: 1000;
   background: white;
   height: 35px;
   width: 35px;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQoNCiA8dGl0bGUvPg0KIDxnPg0KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+DQogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPg0KIDwvZz4NCiA8Zz4NCiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPg0KICA8bGluZSBzdHJva2Utd2lkdGg9IjJweCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2U9IiM5OTk5OTkiIGZpbGw9Im5vbmUiIGlkPSJzdmdfMSIgeTI9IjI1IiB5MT0iNyIgeDI9IjI1IiB4MT0iNyIgY2xhc3M9ImNscy0xIi8+DQogIDxsaW5lIHN0cm9rZS13aWR0aD0iMnB4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZT0iIzk5OTk5OSIgZmlsbD0ibm9uZSIgaWQ9InN2Z18yIiB5Mj0iNyIgeTE9IjI1IiB4Mj0iMjUiIHgxPSI3IiBjbGFzcz0iY2xzLTEiLz4NCiA8L2c+DQo8L3N2Zz4=");
   background-size: contain;
   background-repeat: no-repeat;
@@ -65,8 +70,9 @@
 }
 
 .veneer-nav {
-  width: 40%;
+  width: 30%;
   height: 100%;
+  cursor: pointer;
   position: absolute;
   top: 0;
 }
@@ -95,15 +101,11 @@
 
 .veneer-gallery-image-container {
   background: lightgrey;
-  width: calc((1200px - 40px) / 3 - (40px / 3));
+  width: calc((1200px - 40px) / 3 - (40px / 2));
   height: 280px;
   margin-right: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-}
-
-.veneer-gallery-image-container:nth-child(3n) {
-  margin-right: 0;
 }
 
 .veneer-gallery-image-container .veneer-gallery-image {
