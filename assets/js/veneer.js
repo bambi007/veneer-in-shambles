@@ -8,6 +8,10 @@ var veneerGalleryImages = document.getElementsByClassName('veneer-gallery-image'
 var veneerNavPrevious = document.getElementById('veneer-left-area');
 var veneerNavNext = document.getElementById('veneer-right-area');
 
+var veneerLeftArrow = document.getElementById('veneer-left-arrow');
+var veneerRightArrow = document.getElementById('veneer-right-arrow');
+
+
 var imagesSrc = [];
 var imagesAlt = [];
 
@@ -44,6 +48,8 @@ window.addEventListener('resize', function (event) {
 // OPEN VENEER 
 function openVeneer() {
   veneer.classList.add('veneer-on')
+  veneerLeftArrow.classList.add('veneer-on')
+  veneerRightArrow.classList.add('veneer-on')
 }
 
 veneerGallery.addEventListener('click', function (event) {
@@ -63,7 +69,8 @@ function closeVeneer() {
   veneerImage.src = "";
   veneerImage.alt = "";
   veneerResetContainerWidth()
-
+  veneerLeftArrow.classList.remove('veneer-on')
+  veneerRightArrow.classList.remove('veneer-on')
 }
 
 
@@ -105,6 +112,16 @@ veneerNavNext.addEventListener('click', function (event) {
 })
 
 veneerNavPrevious.addEventListener('click', function (event) {
+  veneerResetContainerWidth()
+  veneerPreviousImage();
+})
+
+veneerRightArrow.addEventListener('click', function (event) {
+  veneerResetContainerWidth()
+  veneerNextImage();
+})
+
+veneerLeftArrow.addEventListener('click', function (event) {
   veneerResetContainerWidth()
   veneerPreviousImage();
 })
